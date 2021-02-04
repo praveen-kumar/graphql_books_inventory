@@ -1,2 +1,2 @@
-# graphql_books_inventory
+# GraphQL, Express, React
 GraphQL
