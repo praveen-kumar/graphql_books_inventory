@@ -1,9 +1,25 @@
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema/schema");
+const mongoose = require("mongoose");
 
-// creates an express application
+//creates an express application
 const app = express();
+
+//connect to mlab database
+mongoose.connect(
+  "mongodb+srv://kumar:test123@my-db.kwpuk.mongodb.net/my-db?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
+    {
+      if (err) {
+        console.log("problem with connection" + err);
+      } else {
+        console.log("connected to db");
+      }
+    }
+  }
+);
 
 // setup the middleware
 app.use(
@@ -17,3 +33,5 @@ app.use(
 app.listen(4000, () => {
   console.log("now listening for requests on port 4000");
 });
+
+module.exports = { mongoose };
