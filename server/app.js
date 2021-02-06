@@ -8,7 +8,7 @@ const app = express();
 
 //connect to mlab database
 mongoose.connect(
-  "mongodb+srv://<user>:<password>@my-db.kwpuk.mongodb.net/my-db?retryWrites=true&w=majority",
+  "mongodb+srv://testUser:<db-password>@my-db.rcles.mongodb.net/my-db?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     {
