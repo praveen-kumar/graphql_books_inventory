@@ -3,6 +3,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 // components
 import BookList from "./components/BookList";
+import AddBook from "./components/AddBook";
 
 // intialize an ApolloClient instance
 // you'll need to provide it the url of a running GraphQL server
@@ -16,8 +17,9 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div id="main">
-          <h1>I React</h1>
+          <h1>My Reading List</h1>
           <BookList />
+          <AddBook />
         </div>
       </ApolloProvider>
     );
