@@ -13,7 +13,7 @@ app.use(cors());
 
 //connect to mlab database
 mongoose.connect(
-  "mongodb+srv://testUser:process.env.DB_PASSWORD@my-db.rcles.mongodb.net/my-db?retryWrites=true&w=majority",
+  `mongodb+srv://testUser:${process.env.DB_PASSWORD}@my-db.rcles.mongodb.net/my-db?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     {
