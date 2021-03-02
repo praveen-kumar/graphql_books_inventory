@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { getAuthorsQuery } from "../queries/queries";
+import { useQuery, useMutation } from "@apollo/client";
+import { getAuthorsQuery, addBookMutation } from "../queries/queries";
 
 function DisplayAuthors() {
   const { loading, data } = useQuery(getAuthorsQuery);
@@ -20,10 +20,17 @@ function AddBook() {
   const [name, setName] = useState("");
   const [genre, setGenre] = useState("");
   const [authorId, setAuthorId] = useState("");
+  const [addBookMut, { form }] = useMutation(addBookMutation);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(`name: ${name}, genre: ${genre}, authorId: ${authorId}`);
+    addBookMut({
+      variables: {
+        name: form.name,
+        genre: form.genre,
+        authorId: form.authorId,
+      },
+    });
   }
 
   return (
@@ -51,4 +58,5 @@ function AddBook() {
   );
 }
 
+// using compose bound the query and mutation together
 export default AddBook;
